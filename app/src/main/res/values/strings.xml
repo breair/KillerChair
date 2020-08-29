@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KillerChair</string>
+    <string name="notification_channel_name">Timer</string>
+    <string name="notification_channel_description">remaining sitting time</string>
 </resources>

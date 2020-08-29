@@ -1,5 +1,6 @@
 package com.breair_sb.apps.killerchair;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.widget.TextView;
@@ -7,10 +8,10 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class mSimpleCountDownTimer extends CountDownTimer {
-    private TextView timerTimeTextView;
+    public TextView timerTimeTextView;
     private CircularProgressBar circularProgressBar;
     private TextView timePassedTextView;
-    private int minsPassed = 0;
+    private int secPassed = 0;
     int progresspercent;
     boolean timerStarted = false;
     float[] hsv = {220, 89, 100};
@@ -25,6 +26,7 @@ public class mSimpleCountDownTimer extends CountDownTimer {
         circularProgressBar.setColor(Color.HSVToColor(hsv));
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onTick(long millisUntilFinished) {
         timerTimeTextView.setText(String.format("%02d:%02d", millisUntilFinished / 60000, (millisUntilFinished / 1000) % 60));
@@ -35,10 +37,8 @@ public class mSimpleCountDownTimer extends CountDownTimer {
             circularProgressBar.setColor(Color.HSVToColor(hsv));
 
         }
-        if ((millisUntilFinished / 1000) % 60 == 0) {
-            minsPassed++;
-            timePassedTextView.setText(String.format("Time Passed: %d min", minsPassed));
-        }
+        secPassed++;
+        timePassedTextView.setText(String.format("Time Passed: %d min", secPassed / 60));
     }
 
     @Override
@@ -50,4 +50,5 @@ public class mSimpleCountDownTimer extends CountDownTimer {
         start();
 
     }
+
 }
