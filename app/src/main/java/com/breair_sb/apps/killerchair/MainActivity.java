@@ -20,6 +20,7 @@ import android.widget.TextView;
 import java.lang.reflect.Type;
 
 public class MainActivity extends AppCompatActivity {
+    private ConstraintLayout constraintLayout;
     private ConstraintLayout timerLayout;
     boolean timerStarted = false;
     mSimpleCountDownTimer sittingTimer;
@@ -28,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        constraintLayout = findViewById(R.id.constraint_layout);
         timerLayout = findViewById(R.id.timer_Layout);
-        sittingTimer = new mSimpleCountDownTimer(240000, 1000, timerLayout, timerStarted);
+        sittingTimer = new mSimpleCountDownTimer(240000, 1000, constraintLayout, timerStarted);
         timerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
