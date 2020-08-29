@@ -22,6 +22,7 @@ public class mSimpleCountDownTimer extends CountDownTimer {
         timerTimeTextView = timerLayout.findViewById(R.id.timer_time);
         timePassedTextView = timerLayout.findViewById(R.id.time_passed);
         circularProgressBar = (CircularProgressBar) timerLayout.findViewById(R.id.custom_progressBar);
+        circularProgressBar.setColor(Color.HSVToColor(hsv));
     }
 
     @Override
