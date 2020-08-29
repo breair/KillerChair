@@ -20,63 +20,29 @@ import android.widget.TextView;
 import java.lang.reflect.Type;
 
 public class MainActivity extends AppCompatActivity {
-    private CircularProgressBar circularProgressBar;
-    private ConstraintLayout constraintLayout;
-    private TextView timerTimeTextView;
-    private TextView timePassedTextView;
-    private int minsPassed = 0;
-    int progresspercent;
-    float[] hsv = {230, 89, 100};
+    private ConstraintLayout timerLayout;
     boolean timerStarted = false;
-    CountDownTimer countDownTimer;
+    mSimpleCountDownTimer sittingTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        constraintLayout = findViewById(R.id.timer_Layout);
-        timerTimeTextView = findViewById(R.id.timer_time);
-        timePassedTextView = findViewById(R.id.time_passed);
-        circularProgressBar = (CircularProgressBar) constraintLayout.findViewById(R.id.custom_progressBar);
-        countDownTimer = new CountDownTimer(240000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                timerTimeTextView.setText(String.format("%02d:%02d", millisUntilFinished / 60000, (millisUntilFinished / 1000) % 60));
-                progresspercent = (int) (240000 - millisUntilFinished) / 2400;
-                circularProgressBar.setProgress(progresspercent);
-                if ((millisUntilFinished / 1000) % 5 == 0) {
-                    hsv[0] = ((float) 100 - progresspercent) * 2.3f;
-                    circularProgressBar.setColor(Color.HSVToColor(hsv));
-
-                }
-                if ((millisUntilFinished / 1000) % 60 == 0) {
-                    minsPassed++;
-                    timePassedTextView.setText(String.format("Time Passed: %d min",minsPassed));
-                }
-            }
-
-            public void onFinish() {
-                timerTimeTextView.setText("done!");
-                circularProgressBar.setProgress(100);
-                timerStarted = false;
-                //send notification||alarm
-                countDownTimer.start();
-
-            }
-        };
-        constraintLayout.setOnClickListener(new View.OnClickListener() {
+        timerLayout = findViewById(R.id.timer_Layout);
+        sittingTimer = new mSimpleCountDownTimer(240000, 1000, timerLayout, timerStarted);
+        timerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!timerStarted) {
                     timerStarted = true;
-                    countDownTimer.start();
+                    sittingTimer.start();
                 }
             }
         });
-        constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
+        timerLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                countDownTimer.cancel();
+                sittingTimer.cancel();
                 timerStarted = false;
                 return false;
             }
