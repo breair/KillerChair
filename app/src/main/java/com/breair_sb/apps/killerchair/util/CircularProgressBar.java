@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair;
+package com.breair_sb.apps.killerchair.util;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.breair_sb.apps.killerchair.R;
+
 public class CircularProgressBar extends View {
     private float strokeWidth = 4; //thickness of progress bar
     private float progress = 0;
@@ -20,6 +22,7 @@ public class CircularProgressBar extends View {
     private RectF rectF;
     private Paint backgroundPaint;
     private Paint foregroundPaint;
+    private float[] hsv = {220, 89, 100};
 
     public CircularProgressBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -82,8 +85,9 @@ public class CircularProgressBar extends View {
         return color;
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    public void setColor(float progress) {
+        hsv[0] = ((float) 100 - progress) * 2.2f;
+        color = Color.HSVToColor(hsv);
         foregroundPaint.setColor(color);
         invalidate();
         requestLayout();
