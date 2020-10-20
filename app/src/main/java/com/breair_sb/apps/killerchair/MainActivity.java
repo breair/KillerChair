@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView timerTimeTextView;
     private CircularProgressBar circularProgressBar;
     //private TextView timePassedTextView;
+    private Button stopActionButton;
     private Context context;
     private KC_TimerUIReceiver kc_timerUIReceiver;
 
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         timerTimeTextView = timerLayout.findViewById(R.id.timer_time);
         //timePassedTextView = timerLayout.findViewById(R.id.time_passed);TODO get passed time from shared prefrences
         circularProgressBar = timerLayout.findViewById(R.id.custom_progressBar);
+        stopActionButton = findViewById(R.id.action_stoptimer);
         context = this;
         //Start the Timer service
 
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent startIntent = new Intent(context, KC_TimerService.class);
                 startIntent.setAction(KC_TimerService.KC_TIMER_ACTION_START);
                 context.startService(startIntent);
+                stopActionButton.setVisibility(View.VISIBLE);
 
             }
         });
@@ -54,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
                 resetIntent.setAction(KC_TimerService.KC_TIMER_ACTION_RESET);
                 context.startService(resetIntent);
                 return false;
+            }
+        });
+        stopActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent stopIntent = new Intent(context, KC_TimerService.class);
+                stopIntent.setAction(KC_TimerService.KC_TIMER_ACTION_STOP);
+                context.startService(stopIntent);
+                stopActionButton.setVisibility(View.INVISIBLE);
             }
         });
     }

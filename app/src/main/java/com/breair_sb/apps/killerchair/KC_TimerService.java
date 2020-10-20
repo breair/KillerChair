@@ -45,7 +45,6 @@ public class KC_TimerService extends Service {
                         simpleSittingTimer.stopTimer();
 
                     }
-                    unregisterReceiver(kc_NotificationReceiver);
                     stopSelf();
                     break;
                 default:
@@ -58,8 +57,8 @@ public class KC_TimerService extends Service {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         unregisterReceiver(kc_NotificationReceiver);
+        super.onDestroy();
     }
 
     @Override

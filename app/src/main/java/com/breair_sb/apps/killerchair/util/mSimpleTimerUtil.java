@@ -62,6 +62,7 @@ public class mSimpleTimerUtil extends CountDownTimer {
 
     public void stopTimer() {
         cancel();
+        updateTimer(0);
         timerStarted = false;
     }
 }
