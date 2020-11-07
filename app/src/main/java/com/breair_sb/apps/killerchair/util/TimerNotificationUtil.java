@@ -10,28 +10,33 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.breair_sb.apps.killerchair.KC_TimerService;
 import com.breair_sb.apps.killerchair.MainActivity;
 import com.breair_sb.apps.killerchair.R;
+import com.breair_sb.apps.killerchair.SittingTimerService;
 
-import static com.breair_sb.apps.killerchair.KC_TimerService.KC_TIMER_ACTION_RESET;
+import static com.breair_sb.apps.killerchair.SittingTimerService.KC_TIMER_ACTION_RESET;
 
-public class NotificationUtil {
+public class TimerNotificationUtil {
     private NotificationManagerCompat notificationManager;
     public NotificationCompat.Builder builder;
     private int notificationId;
-    private Context context;
     private final String KC_timer_channelId = "KC_Timer";
+    private Context context;
 
 
-    public NotificationUtil(Context context, int id) {
+    public TimerNotificationUtil(Context context, int id) {
         this.context = context;
         this.notificationId = id;
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent activityPendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-        Intent resetActionIntent = new Intent(context, KC_TimerService.class).setAction(KC_TIMER_ACTION_RESET);
+        notificationManager = NotificationManagerCompat.from(context);
+
+        Intent activityIntent = new Intent(context, MainActivity.class);
+        activityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);//TODO WTH is this
+        PendingIntent activityPendingIntent = PendingIntent.getActivity(context, 0, activityIntent, 0);
+
+        Intent resetActionIntent = new Intent(context, SittingTimerService.class).setAction(KC_TIMER_ACTION_RESET);
         PendingIntent resetActionPendingIntent = PendingIntent.getService(context, 0, resetActionIntent, 0);
+
+        createBNotificationChannel();
         builder = new NotificationCompat.Builder(context, KC_timer_channelId)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(context.getString(R.string.app_name))
@@ -40,8 +45,7 @@ public class NotificationUtil {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(activityPendingIntent)
                 .addAction(R.drawable.ic_kc_timer_reset_24, "RESET", resetActionPendingIntent);
-        createBNotificationChannel();
-        notificationManager = NotificationManagerCompat.from(context);
+
     }
 
 

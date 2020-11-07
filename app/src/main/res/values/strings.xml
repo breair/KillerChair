@@ -4,4 +4,23 @@
     <string name="background_notification_channel_description">remaining sitting time</string>
     <string name="time_remaining">Time remaining: </string>
     <string name="time_passed">Time passed: </string>
+    <string name="title_activity_k_c_settings">KCSettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="general">General</string>
+    <string name="sound">Sound</string>
+    <string name="theme">Theme</string>
+
+    <!-- General Preferences -->
+    <string name="sitting_time">Sitting Time :</string>
+    <string name="isbreak">Take a break</string>
+    <string name="break_time">Break Time :</string>
+
+    <!-- Sound Preferences -->
+    <string name="alarm_title">Display an Alarm</string>
+    <string name="alarm_summary_on">Display an Alarm when the timer goes over</string>
+    <string name="alarm_summary_off">Only show notification when the timer goes over</string>
+    <string name="select_ringtone">Select ringtone: </string>
+    <!-- theme Preferences -->
+    <string name="darktheme_title">Dark Theme</string>
 </resources>

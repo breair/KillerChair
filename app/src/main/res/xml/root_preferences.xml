@@ -1,0 +1,56 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/general">
+
+        <SeekBarPreference
+            android:max="@integer/max_interval"
+            app:adjustable="true"
+            app:key="SittingInterval"
+            app:min="@integer/min_interval"
+            app:seekBarIncrement="@integer/increment"
+            app:showSeekBarValue="true"
+            app:title="@string/sitting_time"
+            app:useSimpleSummaryProvider="true" />
+        <!--TODO implement a Break option
+        <SwitchPreference
+            app:key="break"
+            app:title="@string/isbreak" />
+        <SeekBarPreference
+            android:max="@integer/max_break"
+            app:adjustable="true"
+            app:dependency="break"
+            app:key="breaktime"
+            app:min="@integer/min_break"
+            app:seekBarIncrement="@integer/increment"
+            app:showSeekBarValue="true"
+            app:title="@string/break_time" /> -->
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sound">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="alarm"
+            app:summaryOff="@string/alarm_summary_off"
+            app:summaryOn="@string/alarm_summary_on"
+            app:title="@string/alarm_title" />
+
+        <MultiSelectListPreference
+            app:dependency="alarm"
+            app:entries="@array/ringtones_entries"
+            app:entryValues="@array/ringtones_values"
+            app:key="alarm_ringtone"
+            app:title="@string/select_ringtone" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/theme">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dark_theme"
+            app:title="@string/darktheme_title" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="min_interval">15</integer>
+    <integer name="max_interval">90</integer>
+    <integer name="min_break">5</integer>
+    <integer name="max_break">15</integer>
+    <integer name="increment">5</integer>
+</resources>

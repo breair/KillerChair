@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+<ImageButton
+    android:id="@+id/settings_activity_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_kc_base_settings_24"
+
+    style="@style/Widget.AppCompat.Button.Borderless"
+    app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/time_passed"
@@ -39,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="START"
+            android:text="00:00"
             android:textAlignment="center"
             android:textSize="55sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -62,14 +70,13 @@
             app:progressBarThickness="4dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/action_stoptimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/cardview_light_background"
         android:src="@drawable/ic_kc_timer_pause_24"
         android:text="STOP"
-        style="@style/Widget.AppCompat.Button.Small"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
