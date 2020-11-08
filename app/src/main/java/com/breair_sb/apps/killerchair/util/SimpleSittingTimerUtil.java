@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 public class SimpleSittingTimerUtil extends CountDownTimer {
 
     public static final String KC_TIMER_ACTION_Time_CHANGED = "com.breair_sb.apps.killerchair.actiontimechanged";
+    public static final String KC_TIMER_ACTION_FINISHED = "com.breair_sb.apps.killerchair.actiontimerfinished";
     private boolean istimerStarted;
     public long millisInFuture = 25;
     Context context;
@@ -28,8 +29,9 @@ public class SimpleSittingTimerUtil extends CountDownTimer {
     public void onFinish() {
         updateTimer(millisInFuture);
         istimerStarted = false;
-        //TODO send notification || alarm
-        start();
+        Intent finishedIntent = new Intent();
+        finishedIntent.setAction(KC_TIMER_ACTION_FINISHED);
+        context.sendBroadcast(finishedIntent, null);
     }
 
     //sends broadcast to update (UI | notification)

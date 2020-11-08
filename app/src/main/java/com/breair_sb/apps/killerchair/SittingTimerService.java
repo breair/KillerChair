@@ -11,6 +11,7 @@ import androidx.preference.PreferenceManager;
 
 import com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil;
 
+import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_FINISHED;
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
 
 
@@ -20,7 +21,8 @@ public class SittingTimerService extends Service {
     public static final String KC_TIMER_ACTION_RESET = "com.breair_sb.apps.killerchair.actionreset";
 
     private SimpleSittingTimerUtil simpleSittingTimer;
-    TimerNotificationReceiver kc_NotificationReceiver;
+    TimerNotificationReceiver timeNotificationReceiver;
+    TimerFinishedReceiver timerFinishedReceiver;
     SharedPreferences sharedPrefs;
     Context context;
 
@@ -31,8 +33,10 @@ public class SittingTimerService extends Service {
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         long sittingTimeInMins = sharedPrefs.getInt("SittingInterval", 25);
         simpleSittingTimer = new SimpleSittingTimerUtil((sittingTimeInMins * 60000), 0, 1000, context);
-        kc_NotificationReceiver = new TimerNotificationReceiver();
-        this.registerReceiver(kc_NotificationReceiver, new IntentFilter(KC_TIMER_ACTION_Time_CHANGED));
+        timeNotificationReceiver = new TimerNotificationReceiver();
+        timerFinishedReceiver = new TimerFinishedReceiver();
+        this.registerReceiver(timeNotificationReceiver, new IntentFilter(KC_TIMER_ACTION_Time_CHANGED));
+        this.registerReceiver(timerFinishedReceiver, new IntentFilter(KC_TIMER_ACTION_FINISHED));
     }
 
     @Override
@@ -67,7 +71,8 @@ public class SittingTimerService extends Service {
 
     @Override
     public void onDestroy() {
-        unregisterReceiver(kc_NotificationReceiver);
+        unregisterReceiver(timeNotificationReceiver);
+        unregisterReceiver(timerFinishedReceiver);
         super.onDestroy();
     }
 
