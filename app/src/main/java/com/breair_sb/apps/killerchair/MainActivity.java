@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         circularProgressBar = timerLayout.findViewById(R.id.custom_progressBar);
         stopActionButton = findViewById(R.id.action_stoptimer);
         settingsActivityButton = findViewById(R.id.settings_activity_button);
-
         context = this;
 
         timerTimeTextView.setText(setDefTimeTextView());

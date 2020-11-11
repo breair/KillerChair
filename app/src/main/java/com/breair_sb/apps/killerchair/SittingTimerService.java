@@ -32,7 +32,7 @@ public class SittingTimerService extends Service {
         context = this;
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         long sittingTimeInMins = sharedPrefs.getInt("SittingInterval", 25);
-        simpleSittingTimer = new SimpleSittingTimerUtil((sittingTimeInMins * 60000), 0, 1000, context);
+        simpleSittingTimer = new SimpleSittingTimerUtil((sittingTimeInMins * 6000), 0, 1000, context);//TODO 60000
         timeNotificationReceiver = new TimerNotificationReceiver();
         timerFinishedReceiver = new TimerFinishedReceiver();
         this.registerReceiver(timeNotificationReceiver, new IntentFilter(KC_TIMER_ACTION_Time_CHANGED));

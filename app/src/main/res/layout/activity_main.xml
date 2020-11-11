@@ -7,14 +7,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-<ImageButton
-    android:id="@+id/settings_activity_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/ic_kc_base_settings_24"
 
-    style="@style/Widget.AppCompat.Button.Borderless"
-    app:layout_constraintEnd_toEndOf="parent" />
+    <ImageButton
+        android:id="@+id/settings_activity_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_base_settings_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias=".99"
+        app:layout_constraintVertical_bias="0.01" />
 
     <TextView
         android:id="@+id/time_passed"
@@ -40,7 +45,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4">
+        app:layout_constraintVertical_bias="0.42">
 
         <TextView
             android:id="@+id/timer_time"
@@ -49,7 +54,7 @@
             android:layout_gravity="center"
             android:text="00:00"
             android:textAlignment="center"
-            android:textSize="55sp"
+            android:textSize="60sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -57,11 +62,10 @@
 
         <com.breair_sb.apps.killerchair.util.CircularProgressBar
             android:id="@+id/custom_progressBar"
-            android:layout_width="280dp"
-            android:layout_height="280dp"
+            android:layout_width="290dp"
+            android:layout_height="290dp"
             android:layout_margin="10dp"
             android:baselineAligned="false"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,11 +76,11 @@
 
     <ImageButton
         android:id="@+id/action_stoptimer"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_kc_timer_pause_24"
+        android:src="@drawable/ic_timer_pause_24"
         android:text="STOP"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

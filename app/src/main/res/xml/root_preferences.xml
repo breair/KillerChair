@@ -36,14 +36,6 @@
             app:summaryOff="@string/alarm_summary_off"
             app:summaryOn="@string/alarm_summary_on"
             app:title="@string/alarm_title" />
-
-        <MultiSelectListPreference
-            app:dependency="alarm"
-            app:entries="@array/ringtones_entries"
-            app:entryValues="@array/ringtones_values"
-            app:key="alarm_ringtone"
-            app:title="@string/select_ringtone" />
-
     </PreferenceCategory>
     <PreferenceCategory app:title="@string/theme">
         <SwitchPreference
