@@ -4,24 +4,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceFragmentCompat;
 
-public class SettingsActivity extends AppCompatActivity {
+import com.breair_sb.apps.killerchair.util.ThemeUtil;
+
+public class SettingsActivity extends AppCompatActivity implements SettingsFragment.OnThemeChangeListener {
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeUtil.checkTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.settings, new SettingsFragment())
                 .commit();
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
         ImageButton returnButton = findViewById(R.id.sittingsReturn);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,13 +32,10 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    public static class SettingsFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            setPreferencesFromResource(R.xml.root_preferences, rootKey);
-
-        }
-
-        ;
+    @Override
+    public void onThemeChange() {
+        setResult(1);
+        recreate();
     }
+
 }
