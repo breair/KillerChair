@@ -11,12 +11,14 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.preference.PreferenceManager;
 
 import com.breair_sb.apps.killerchair.util.CircularProgressBar;
+import com.breair_sb.apps.killerchair.util.ThemeUtil;
 
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.formatTimeText;
@@ -30,9 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton settingsActivityButton;
     private Context context;
     private KC_TimerUIReceiver kc_timerUIReceiver;
+    public final int THEME_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeUtil.checkTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -42,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         circularProgressBar = timerLayout.findViewById(R.id.custom_progressBar);
         stopActionButton = findViewById(R.id.action_stoptimer);
         settingsActivityButton = findViewById(R.id.settings_activity_button);
-
         context = this;
 
         timerTimeTextView.setText(setDefTimeTextView());
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, SettingsActivity.class);
-                context.startActivity(intent);
+                startActivityForResult(intent, THEME_REQUEST_CODE);
             }
         });
         //listen to when the button clicked ->Start the Timer service
@@ -102,10 +105,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == THEME_REQUEST_CODE) {
+            recreate();
+        }
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         unregisterReceiver(kc_timerUIReceiver);
     }
+
 
     String setDefTimeTextView() {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
