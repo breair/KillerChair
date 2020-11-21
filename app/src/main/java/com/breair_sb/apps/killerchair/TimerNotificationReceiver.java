@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.breair_sb.apps.killerchair.util.TimerNotificationUtil;
 
+import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_FINISHED;
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
 
 public class TimerNotificationReceiver extends BroadcastReceiver {
@@ -26,6 +27,16 @@ public class TimerNotificationReceiver extends BroadcastReceiver {
                     isBuilded = true;
                 }
                 TimerNotification.updateNotification(currentTime);
+            }
+            if (intent.getAction().equals(KC_TIMER_ACTION_FINISHED)) {
+                if (isBuilded) {
+                    TimerNotificationUtil TimerNotification = new TimerNotificationUtil(context, 0);//timer notification id is 0
+                    TimerNotification.cancelNotification();
+                    isBuilded = false;
+                }
+                TimerNotificationUtil finishNotification = new TimerNotificationUtil(context, 0);
+                finishNotification.builder.build();
+                Log.d("f**k", "its builded");
             }
         }
     }

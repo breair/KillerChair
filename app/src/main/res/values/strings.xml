@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">KillerChair</string>
-    <string name="background_notification_channel_name">backgroundTimer</string>
-    <string name="background_notification_channel_description">remaining sitting time</string>
+    <string name="notification_channel_name">Timer status</string>
+    <string name="notification_channel_description">Remaining sitting time,Time goes over alert ,etc..</string>
     <string name="time_remaining">Time remaining: </string>
     <string name="time_passed">Time passed: </string>
     <string name="title_activity_k_c_settings">KCSettingsActivity</string>
+    <string name="stop">Stop</string>
+    <string name="takeBreak">Take a break</string>
+    <string name="mins">mins</string>
 
     <!-- Preference Titles -->
     <string name="general">General</string>
