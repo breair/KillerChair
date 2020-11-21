@@ -20,20 +20,21 @@ import androidx.preference.PreferenceManager;
 import com.breair_sb.apps.killerchair.util.CircularProgressBar;
 import com.breair_sb.apps.killerchair.util.ThemeUtil;
 
+import java.util.Random;
+
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
-import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.TIME_PASSED_KEY;
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.formatTimeText;
 
 
 public class MainActivity extends AppCompatActivity {
-    private TextView timerTimeTextView;
+    public final int THEME_REQUEST_CODE = 1;
     private CircularProgressBar circularProgressBar;
-    private TextView timePassedTextView;
+    private TextView timerTimeTextView;
+    private TextView quoteTextView;
     private ImageButton stopActionButton;
     private ImageButton settingsActivityButton;
     private Context context;
     private KC_TimerUIReceiver kc_timerUIReceiver;
-    public final int THEME_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +44,14 @@ public class MainActivity extends AppCompatActivity {
 
         final ConstraintLayout timerLayout = findViewById(R.id.timer_Layout);
         timerTimeTextView = timerLayout.findViewById(R.id.timer_time);
-        timePassedTextView = timerLayout.findViewById(R.id.time_passed);
+        quoteTextView = findViewById(R.id.quote);
         circularProgressBar = timerLayout.findViewById(R.id.custom_progressBar);
         stopActionButton = findViewById(R.id.action_stoptimer);
         settingsActivityButton = findViewById(R.id.settings_activity_button);
         context = this;
 
         timerTimeTextView.setText(setDefTimeTextView());
+        quoteTextView.setText(pickRandomQuote());
         //open settings when clicked
         settingsActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         this.registerReceiver(kc_timerUIReceiver, intentFilter);
         //remove timer notification. TimerNotification id is 0
         NotificationManagerCompat.from(context).cancel(0);
+        quoteTextView.setText(pickRandomQuote());
     }
 
 
@@ -120,12 +123,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    String setDefTimeTextView() {
+    private String pickRandomQuote() {
+        String quotes[] = getResources().getStringArray(R.array.qoutes);
+        Random random = new Random();
+        return quotes[random.nextInt(quotes.length)];
+    }
+
+    private String setDefTimeTextView() {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         int time = sharedPrefs.getInt("SittingInterval", 0);
-        String timeText = formatTimeText(time * 60000, 100);
-        return timeText;
+        return formatTimeText(time * 60000, 100);
 
     }
 
@@ -139,34 +147,20 @@ public class MainActivity extends AppCompatActivity {
                     abortBroadcast();//cancel the broadcast before it reach Notification Broadcastreceiver
                     String currentTimeText = "00:00";
                     int progressInPercent = 0;
-                    boolean timePassedChanged = false;
-                    boolean colorChanged = false;
                     try {
                         currentTimeText = intent.getStringExtra("currentTimeleft");
                         progressInPercent = intent.getIntExtra("progressInPercent", 0);
-                        timePassedChanged = intent.getBooleanExtra("timePassedChanged", false);
-                        colorChanged = intent.getBooleanExtra("colorchanged", false);
 
                     } catch (Exception e) {
                         Log.e("intent", "onReceive-transferTimeProgress");
                     }
                     timerTimeTextView.setText(currentTimeText);
                     circularProgressBar.setProgress(progressInPercent);
-                    //if (colorChanged) {
                     circularProgressBar.setColor(progressInPercent);
-                    //}
-                    if (timePassedChanged) {
-                        timePassedTextView.setText((CharSequence) getTimePassedText());
-                    }
+
                 }
             }
         }
     }
 
-    private String getTimePassedText() {
-        SharedPreferences sharedPrefs = context.getSharedPreferences("time_passed", Context.MODE_PRIVATE);
-        Long timePassed = sharedPrefs.getLong(TIME_PASSED_KEY, 0);
-        String timePassedText = getString(R.string.time_passed) + timePassed.toString() + getString(R.string.mins);
-        return timePassedText;
-    }
 }

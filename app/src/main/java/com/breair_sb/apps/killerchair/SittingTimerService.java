@@ -69,6 +69,7 @@ public class SittingTimerService extends Service {
 
     }
 
+
     @Override
     public void onDestroy() {
         unregisterReceiver(timeNotificationReceiver);

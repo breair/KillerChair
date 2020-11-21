@@ -1,18 +1,15 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <!-- Quotes -->
+    <string-array name="qoutes">
+        <item>q1</item>
+        <item>adfs adfasf sdfasff afaf</item>
+        <item>q3</item>
+        <item>q4</item>
+        <item>Put away your phone</item>
+        <item>Maintain a good posture</item>
+        <item>qewrc df wer df thre ee</item>
+        <item>shgs sg dsgdfgs dfgd</item>
+        <item>q9</item>
     </string-array>
-    <!-- Ringtones Preference -->
-    <string-array name="ringtones_entries">
-        <item>sound 1</item>
-        <item>sound 2</item>
-        <item>sound 3</item>
-    </string-array>
-    <integer-array name="ringtones_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </integer-array>
+
 </resources>
