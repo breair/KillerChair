@@ -9,6 +9,9 @@ import android.os.IBinder;
 
 import androidx.preference.PreferenceManager;
 
+import com.breair_sb.apps.killerchair.Receivers.TimerFinishedReceiver;
+import com.breair_sb.apps.killerchair.Receivers.TimerNotificationReceiver;
+import com.breair_sb.apps.killerchair.util.BreakTimeUtil;
 import com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil;
 
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_FINISHED;
@@ -19,6 +22,7 @@ public class SittingTimerService extends Service {
     public static final String KC_TIMER_ACTION_START = "com.breair_sb.apps.killerchair.actionstart";
     public static final String KC_TIMER_ACTION_STOP = "com.breair_sb.apps.killerchair.actionstop";
     public static final String KC_TIMER_ACTION_RESET = "com.breair_sb.apps.killerchair.actionreset";
+    public static final String KC_BREAK_TIME_ACTION_START = "com.breair_sb.apps.killerchair.actionstartbreak";
 
     private SimpleSittingTimerUtil simpleSittingTimer;
     TimerNotificationReceiver timeNotificationReceiver;
@@ -61,6 +65,9 @@ public class SittingTimerService extends Service {
                     }
                     stopSelf();
                     break;
+                case KC_BREAK_TIME_ACTION_START:
+                    BreakTimeUtil breakTime = new BreakTimeUtil(context);
+                    breakTime.start();
                 default:
                     break;
             }

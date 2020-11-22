@@ -11,7 +11,7 @@
 
     <!-- Preference Titles -->
     <string name="general">General</string>
-    <string name="sound">Sound</string>
+    <string name="notifications">Notifications</string>
     <string name="theme">Theme</string>
 
     <!-- General Preferences -->

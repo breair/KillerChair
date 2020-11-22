@@ -12,7 +12,6 @@
             app:showSeekBarValue="true"
             app:title="@string/sitting_time"
             app:useSimpleSummaryProvider="true" />
-        <!--TODO implement a Break option
         <SwitchPreference
             app:key="break"
             app:title="@string/isbreak" />
@@ -24,11 +23,11 @@
             app:min="@integer/min_break"
             app:seekBarIncrement="@integer/increment"
             app:showSeekBarValue="true"
-            app:title="@string/break_time" /> -->
+            app:title="@string/break_time" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sound">
+    <PreferenceCategory app:title="@string/notifications">
 
         <SwitchPreferenceCompat
             app:defaultValue="false"
@@ -36,6 +35,7 @@
             app:summaryOff="@string/alarm_summary_off"
             app:summaryOn="@string/alarm_summary_on"
             app:title="@string/alarm_title" />
+
     </PreferenceCategory>
     <PreferenceCategory app:title="@string/theme">
         <SwitchPreference

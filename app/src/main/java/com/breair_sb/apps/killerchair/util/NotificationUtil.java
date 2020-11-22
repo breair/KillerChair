@@ -15,15 +15,13 @@ import com.breair_sb.apps.killerchair.R;
 import com.breair_sb.apps.killerchair.SittingTimerService;
 
 import static com.breair_sb.apps.killerchair.SittingTimerService.KC_TIMER_ACTION_RESET;
-
-public class TimerNotificationUtil {
+//TODO refactor notification system
+public class NotificationUtil {
     private NotificationManagerCompat notificationManager;
     public NotificationCompat.Builder builder;
-    private int notificationId;
 
 
-    public TimerNotificationUtil(Context context, int id) {
-        this.notificationId = id;
+    public NotificationUtil(Context context, NotificationType notificationType) {
         notificationManager = NotificationManagerCompat.from(context);
 
         Intent activityIntent = new Intent(context, MainActivity.class);
@@ -66,10 +64,11 @@ public class TimerNotificationUtil {
 
     public void updateNotification(String currentTime) {
         builder.setContentText(currentTime);
-        notificationManager.notify(notificationId, builder.build());
+        notificationManager.notify(0, builder.build());
     }
 
     public void cancelNotification() {
-        notificationManager.cancel(notificationId);
+        notificationManager.cancel(0);
     }
+
 }

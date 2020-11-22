@@ -1,11 +1,13 @@
-package com.breair_sb.apps.killerchair;
+package com.breair_sb.apps.killerchair.Receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.breair_sb.apps.killerchair.util.TimerNotificationUtil;
+import com.breair_sb.apps.killerchair.R;
+import com.breair_sb.apps.killerchair.util.NotificationType;
+import com.breair_sb.apps.killerchair.util.NotificationUtil;
 
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_FINISHED;
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
@@ -21,7 +23,7 @@ public class TimerNotificationReceiver extends BroadcastReceiver {
             if (intent.getAction().equals(KC_TIMER_ACTION_Time_CHANGED)) {
                 //format String like: 'Time remaining: 10:04'
                 String currentTime = context.getResources().getString(R.string.time_remaining) + intent.getStringExtra("currentTimeleft");
-                TimerNotificationUtil TimerNotification = new TimerNotificationUtil(context, 0);//timer notification id is 0
+                NotificationUtil TimerNotification = new NotificationUtil(context, NotificationType.TIMER_RUNNING);
                 if (!isBuilded) {
                     TimerNotification.builder.build();
                     isBuilded = true;
@@ -30,11 +32,11 @@ public class TimerNotificationReceiver extends BroadcastReceiver {
             }
             if (intent.getAction().equals(KC_TIMER_ACTION_FINISHED)) {
                 if (isBuilded) {
-                    TimerNotificationUtil TimerNotification = new TimerNotificationUtil(context, 0);//timer notification id is 0
+                    NotificationUtil TimerNotification = new NotificationUtil(context, NotificationType.TIMER_RUNNING);
                     TimerNotification.cancelNotification();
                     isBuilded = false;
                 }
-                TimerNotificationUtil finishNotification = new TimerNotificationUtil(context, 0);
+                NotificationUtil finishNotification = new NotificationUtil(context, NotificationType.TIMER_RUNNING);
                 finishNotification.builder.build();
                 Log.d("f**k", "its builded");
             }
