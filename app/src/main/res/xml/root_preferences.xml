@@ -6,6 +6,7 @@
         <SeekBarPreference
             android:max="@integer/max_interval"
             app:adjustable="true"
+            app:defaultValue="25"
             app:key="SittingInterval"
             app:min="@integer/min_interval"
             app:seekBarIncrement="@integer/increment"
@@ -18,6 +19,7 @@
         <SeekBarPreference
             android:max="@integer/max_break"
             app:adjustable="true"
+            app:defaultValue="5"
             app:dependency="break"
             app:key="breaktime"
             app:min="@integer/min_break"

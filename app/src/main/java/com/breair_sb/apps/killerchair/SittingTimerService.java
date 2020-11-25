@@ -7,11 +7,13 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 
+import androidx.core.app.NotificationManagerCompat;
 import androidx.preference.PreferenceManager;
 
 import com.breair_sb.apps.killerchair.Receivers.TimerFinishedReceiver;
 import com.breair_sb.apps.killerchair.Receivers.TimerNotificationReceiver;
 import com.breair_sb.apps.killerchair.util.BreakTimeUtil;
+import com.breair_sb.apps.killerchair.util.NotificationUtil;
 import com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil;
 
 import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_FINISHED;
@@ -67,6 +69,7 @@ public class SittingTimerService extends Service {
                     break;
                 case KC_BREAK_TIME_ACTION_START:
                     BreakTimeUtil breakTime = new BreakTimeUtil(context);
+                    NotificationManagerCompat.from(context).cancel(NotificationUtil.TIMER_FINISHED_NOTIFICATION_ID);
                     breakTime.start();
                 default:
                     break;

@@ -18,6 +18,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.preference.PreferenceManager;
 
 import com.breair_sb.apps.killerchair.util.CircularProgressBar;
+import com.breair_sb.apps.killerchair.util.NotificationUtil;
 import com.breair_sb.apps.killerchair.util.ThemeUtil;
 
 import java.util.Random;
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         intentFilter.setPriority(10);
         this.registerReceiver(kc_timerUIReceiver, intentFilter);
         //remove timer notification. TimerNotification id is 0
-        NotificationManagerCompat.from(context).cancel(0);
+        NotificationManagerCompat.from(context).cancel(NotificationUtil.TIMER_STATUS_NOTIFICATION_ID);
         quoteTextView.setText(pickRandomQuote());
     }
 
