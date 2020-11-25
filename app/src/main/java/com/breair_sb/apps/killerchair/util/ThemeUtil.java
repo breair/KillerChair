@@ -8,7 +8,7 @@ import androidx.preference.PreferenceManager;
 import com.breair_sb.apps.killerchair.R;
 
 public class ThemeUtil {
-    public static String ThemeKey = "is_dark_theme";
+    public static final String ThemeKey = "is_dark_theme";
 
     public static void checkTheme(Context activityContext) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activityContext);

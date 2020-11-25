@@ -10,14 +10,14 @@ import android.os.IBinder;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.preference.PreferenceManager;
 
-import com.breair_sb.apps.killerchair.Receivers.TimerFinishedReceiver;
-import com.breair_sb.apps.killerchair.Receivers.TimerNotificationReceiver;
+import com.breair_sb.apps.killerchair.receivers.TimerFinishedReceiver;
+import com.breair_sb.apps.killerchair.receivers.TimerNotificationReceiver;
 import com.breair_sb.apps.killerchair.util.BreakTimeUtil;
 import com.breair_sb.apps.killerchair.util.NotificationUtil;
-import com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil;
+import com.breair_sb.apps.killerchair.util.SittingTimerUtil;
 
-import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_FINISHED;
-import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
+import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_FINISHED;
+import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
 
 
 public class SittingTimerService extends Service {
@@ -26,7 +26,7 @@ public class SittingTimerService extends Service {
     public static final String KC_TIMER_ACTION_RESET = "com.breair_sb.apps.killerchair.actionreset";
     public static final String KC_BREAK_TIME_ACTION_START = "com.breair_sb.apps.killerchair.actionstartbreak";
 
-    private SimpleSittingTimerUtil simpleSittingTimer;
+    private SittingTimerUtil SittingTimer;
     TimerNotificationReceiver timeNotificationReceiver;
     TimerFinishedReceiver timerFinishedReceiver;
     SharedPreferences sharedPrefs;
@@ -38,7 +38,7 @@ public class SittingTimerService extends Service {
         context = this;
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         long sittingTimeInMins = sharedPrefs.getInt("SittingInterval", 25);
-        simpleSittingTimer = new SimpleSittingTimerUtil((sittingTimeInMins * 6000), 0, 1000, context);//TODO 60000
+        SittingTimer = new SittingTimerUtil((sittingTimeInMins * 6000), 0, 1000, context);//TODO 60000
         timeNotificationReceiver = new TimerNotificationReceiver();
         timerFinishedReceiver = new TimerFinishedReceiver();
         this.registerReceiver(timeNotificationReceiver, new IntentFilter(KC_TIMER_ACTION_Time_CHANGED));
@@ -50,19 +50,19 @@ public class SittingTimerService extends Service {
         if (intent.getAction() != null) {
             switch (intent.getAction()) {
                 case KC_TIMER_ACTION_START:
-                    if (!simpleSittingTimer.isRunning()) {
-                        simpleSittingTimer.startTimer();
+                    if (!SittingTimer.isRunning()) {
+                        SittingTimer.startTimer();
                     }
                     break;
                 case KC_TIMER_ACTION_RESET:
-                    if (simpleSittingTimer.isRunning()) {
-                        simpleSittingTimer.resetTimer();
+                    if (SittingTimer.isRunning()) {
+                        SittingTimer.resetTimer();
                     }
                     break;
                 case KC_TIMER_ACTION_STOP:
-                    if (simpleSittingTimer.isRunning()) {
+                    if (SittingTimer.isRunning()) {
                         long nextIntervalInMins = sharedPrefs.getInt("SittingInterval", 25);
-                        simpleSittingTimer.stopTimer(nextIntervalInMins * 60000);
+                        SittingTimer.stopTimer(nextIntervalInMins * 60000);
 
                     }
                     stopSelf();

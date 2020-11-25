@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,8 +14,6 @@ import com.breair_sb.apps.killerchair.util.ThemeUtil;
 
 public class AlarmActivity extends AppCompatActivity {
 
-    private Button stopButton;
-    private Button breakButton;
     private AlarmUtil alarm;
 
     @Override
@@ -22,8 +21,8 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ThemeUtil.checkTheme(this);
         setContentView(R.layout.activity_alarm);
-        stopButton = findViewById(R.id.alarmStop);
-        breakButton = findViewById(R.id.alarmbreak);
+        Button breakButton = findViewById(R.id.alarmbreak);
+        ImageButton stopButton = findViewById(R.id.alarmStop);
         alarm = new AlarmUtil(this);
         alarm.start();
 

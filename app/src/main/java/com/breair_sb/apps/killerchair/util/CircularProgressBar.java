@@ -81,9 +81,6 @@ public class CircularProgressBar extends View {
         invalidate();// Notify the view to redraw it self (the onDraw method is called)
     }
 
-    public int getColor() {
-        return color;
-    }
 
     public void setColor(float progress) {
         hsv[0] = ((float) 100 - progress) * 2.2f;

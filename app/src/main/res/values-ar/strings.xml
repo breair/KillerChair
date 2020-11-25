@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">الكرسي القاتل</string>
+    <string name="notification_channel_name">حالة المؤقت</string>
+    <string name="notification_channel_description">وقت الجُلوس المتبقي, إنتهاء الوقت, وقت الراحة</string>
+    <string name="stop">إيقاف</string>
+    <string name="take_break">خذ قليلاً من الراحة</string>
+    <string name="mins">دقيقة</string>
+
+    <!--Notification content-->
+    <string name="time_remaining">المتبقي من الوقت :</string>
+    <string name="sitting_time_finished">أنت تجلس لوقت طويل!!</string>
+    <string name="break_time_finished">لقد أخذت قسطا كافياً من الراحة, حان وقت العمل</string>
+
+    <!-- Preference Titles -->
+    <string name="general">عام</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="theme">السمات</string>
+
+    <!-- General Preferences -->
+    <string name="sitting_time">وقت الجُلوس :</string>
+    <string name="isbreak">خذ قليلاً من الراحة</string>
+    <string name="break_time">وقت الراحة :</string>
+
+    <!-- Sound Preferences -->
+    <string name="alarm_title">عرض منبه</string>
+    <string name="alarm_summary_on">إعرض منبه عندما ينتهي الوقت</string>
+    <string name="alarm_summary_off">قم بعرض إشعار فقط عندما ينتهي الوقت</string>
+    <!-- theme Preferences -->
+    <string name="darktheme_title">الوضع المظلم</string>
+    <string name="back_button_description">زر الرجوع</string>
+    <string name="settings_button_description">لإعدادات</string>
+    <string name="stop_button_description">إبقاف</string>
+    <string name="info">عن التطبيق</string>
+    <string name="info_summary">
+        Killer Chair
+        \nversion 1.0
+        \n©2020 Breair Sabir Inc.</string>
+    <string name="zero_time">٠٠:٠٠</string>
+    <string name="quote">هنا حكمة</string>
+</resources>

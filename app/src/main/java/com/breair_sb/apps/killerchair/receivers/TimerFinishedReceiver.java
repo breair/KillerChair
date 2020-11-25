@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair.Receivers;
+package com.breair_sb.apps.killerchair.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,7 +11,7 @@ import com.breair_sb.apps.killerchair.AlarmActivity;
 import com.breair_sb.apps.killerchair.R;
 import com.breair_sb.apps.killerchair.util.NotificationUtil;
 
-import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_FINISHED;
+import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_FINISHED;
 
 public class TimerFinishedReceiver extends BroadcastReceiver {
     Context context;
@@ -35,7 +35,7 @@ public class TimerFinishedReceiver extends BroadcastReceiver {
     //TODO implement alarm functionality
     void sendAlarm() {
         Intent intent = new Intent(context, AlarmActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 

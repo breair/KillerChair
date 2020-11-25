@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <!-- Quotes -->
+    <string-array name="qoutes">
+        <item>q1</item>
+        <item>adfs adfasf sdfasff afaf</item>
+        <item>q3</item>
+        <item>q4</item>
+        <item>Put away your phone</item>
+        <item>Maintain a good posture</item>
+        <item>qewrc df wer df thre ee</item>
+        <item>shgs sg dsgdfgs dfgd</item>
+        <item>q9</item>
+    </string-array>
+</resources>

@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
-import com.breair_sb.apps.killerchair.Receivers.BreakTimeAlarmReceiver;
+import com.breair_sb.apps.killerchair.receivers.BreakTimeAlarmReceiver;
 
 import java.util.Calendar;
 

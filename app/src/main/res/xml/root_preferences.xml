@@ -45,6 +45,11 @@
             android:key="is_dark_theme"
             app:title="@string/darktheme_title" />
     </PreferenceCategory>
+    <PreferenceCategory app:title="@string/info">
+        <Preference
+            app:key="info"
+            android:summary="@string/info_summary" />
+    </PreferenceCategory>
 
 
 </PreferenceScreen>

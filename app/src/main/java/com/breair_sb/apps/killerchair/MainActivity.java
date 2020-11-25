@@ -23,8 +23,8 @@ import com.breair_sb.apps.killerchair.util.ThemeUtil;
 
 import java.util.Random;
 
-import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
-import static com.breair_sb.apps.killerchair.util.SimpleSittingTimerUtil.formatTimeText;
+import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
+import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.formatTimeText;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView timerTimeTextView;
     private TextView quoteTextView;
     private ImageButton stopActionButton;
-    private ImageButton settingsActivityButton;
     private Context context;
-    private KC_TimerUIReceiver kc_timerUIReceiver;
+    private TimerUIReceiver timerUIReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         quoteTextView = findViewById(R.id.quote);
         circularProgressBar = timerLayout.findViewById(R.id.custom_progressBar);
         stopActionButton = findViewById(R.id.action_stoptimer);
-        settingsActivityButton = findViewById(R.id.settings_activity_button);
+        ImageButton settingsActivityButton = findViewById(R.id.settings_activity_button);
         context = this;
-
+        NotificationManagerCompat.from(context).cancel(0);
         timerTimeTextView.setText(setDefTimeTextView());
         quoteTextView.setText(pickRandomQuote());
         //open settings when clicked
@@ -100,10 +99,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         //fire a broadcast receiver to update UI whenever the activity is visible
         //UI broadcastrececiver has higher priority
-        kc_timerUIReceiver = new KC_TimerUIReceiver();
+        timerUIReceiver = new TimerUIReceiver();
         IntentFilter intentFilter = new IntentFilter(KC_TIMER_ACTION_Time_CHANGED);
         intentFilter.setPriority(10);
-        this.registerReceiver(kc_timerUIReceiver, intentFilter);
+        this.registerReceiver(timerUIReceiver, intentFilter);
         //remove timer notification. TimerNotification id is 0
         NotificationManagerCompat.from(context).cancel(NotificationUtil.TIMER_STATUS_NOTIFICATION_ID);
         quoteTextView.setText(pickRandomQuote());
@@ -113,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(kc_timerUIReceiver);
+        unregisterReceiver(timerUIReceiver);
     }
 
     @Override
@@ -125,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String pickRandomQuote() {
-        String quotes[] = getResources().getStringArray(R.array.qoutes);
+        String[] quotes = getResources().getStringArray(R.array.qoutes);
         Random random = new Random();
         return quotes[random.nextInt(quotes.length)];
     }
@@ -134,19 +133,19 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         int time = sharedPrefs.getInt("SittingInterval", 0);
-        return formatTimeText(time * 60000, 100);
+        return formatTimeText(time * 60000, 100, context);
 
     }
 
     //update UI
-    public class KC_TimerUIReceiver extends BroadcastReceiver {
+    public class TimerUIReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() != null) {
                 if (intent.getAction().equals(KC_TIMER_ACTION_Time_CHANGED)) {
                     abortBroadcast();//cancel the broadcast before it reach Notification Broadcastreceiver
-                    String currentTimeText = "00:00";
+                    String currentTimeText = context.getString(R.string.zero_time);
                     int progressInPercent = 0;
                     try {
                         currentTimeText = intent.getStringExtra("currentTimeleft");

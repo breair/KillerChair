@@ -5,17 +5,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 
-public class SimpleSittingTimerUtil extends CountDownTimer {
+import com.breair_sb.apps.killerchair.R;
+
+public class SittingTimerUtil extends CountDownTimer {
 
     public static final String KC_TIMER_ACTION_Time_CHANGED = "com.breair_sb.apps.killerchair.actiontimechanged";
     public static final String KC_TIMER_ACTION_FINISHED = "com.breair_sb.apps.killerchair.actiontimerfinished";
-    public static final String TIME_PASSED_KEY = "TimePassed";
     private boolean istimerStarted;
     public long millisInFuture;
-    Context context;
+    final Context context;
 
 
-    public SimpleSittingTimerUtil(long millisInFuture, long millisPassed, long countDownInterval, Context context) {
+    public SittingTimerUtil(long millisInFuture, long millisPassed, long countDownInterval, Context context) {
         super(millisInFuture - millisPassed/*to be able to start the timer from when it stopped*/, countDownInterval);
         this.millisInFuture = millisInFuture;
         this.context = context;
@@ -41,7 +42,7 @@ public class SimpleSittingTimerUtil extends CountDownTimer {
         //TODO check lint locale
         int progressInPercent = (int) ((millisInFuture - millisUntilFinished) * 100 / (millisInFuture));
 
-        String currentTimeleft = formatTimeText(millisUntilFinished, progressInPercent);
+        String currentTimeleft = formatTimeText(millisUntilFinished, progressInPercent, context);
         Intent updateintent = new Intent();
         updateintent.setAction(KC_TIMER_ACTION_Time_CHANGED)
                 .putExtra("progressInPercent", progressInPercent)
@@ -75,11 +76,11 @@ public class SimpleSittingTimerUtil extends CountDownTimer {
         istimerStarted = false;
     }
 
-    @SuppressLint("DefaultLocale")
-    public static String formatTimeText(long millisUntilFinished, int progressInPercent) {
+    public static String formatTimeText(long millisUntilFinished, int progressInPercent, Context context) {
         String currentTimeleft;
         if (progressInPercent == 100) {
-            currentTimeleft = "00:00";
+            currentTimeleft = context.getString(R.string.zero_time);
+
         } else {
             currentTimeleft = String.format("%02d:%02d",/*format time in mins:seconds*/
                     millisUntilFinished / 60000, (millisUntilFinished / 1000) % 60);

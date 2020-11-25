@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair.Receivers;
+package com.breair_sb.apps.killerchair.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
