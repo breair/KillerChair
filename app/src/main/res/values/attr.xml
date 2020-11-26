@@ -7,5 +7,11 @@
         <attr name="progressbarColor" format="color" />
         <attr name="progressBarThickness" format="dimension" />
     </declare-styleable>
+    <attr name="round_button_ripple" format="reference" />
+    <attr name="back_button_src" format="reference" />
+    <attr name="settings_button_src" format="reference" />
+    <attr name="reset_button_src" format="reference" />
+    <attr name="stop_button_src" format="reference" />
+    <attr name="start_button_src" format="reference" />
 
 </resources>

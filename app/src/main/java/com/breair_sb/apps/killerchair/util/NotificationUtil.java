@@ -1,10 +1,15 @@
 package com.breair_sb.apps.killerchair.util;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.net.Uri;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -25,7 +30,7 @@ public abstract class NotificationUtil {
     public static final int BREAK_TIME_FINISHED_NOTIFICATION_ID = 2;
     private NotificationManagerCompat notificationManager;
     protected NotificationCompat.Builder builder;
-    private final int NOTIFICATION_ID;
+    private int NOTIFICATION_ID;
     private Context context;
 
 
@@ -35,11 +40,15 @@ public abstract class NotificationUtil {
         this.context = context;
         String timer_channelId = "KC_Timers";
         createNotificationChannel(context, timer_channelId);
+        Uri soundURI = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.sound0);
         builder = new NotificationCompat.Builder(context, timer_channelId)
                 .setSmallIcon(R.drawable.ic_stat_name)
                 .setContentText("")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(getMainActivityPendingIntent());
+                .setAutoCancel(true)
+                .setContentIntent(getMainActivityPendingIntent())
+                .setDefaults(Notification.DEFAULT_LIGHTS)
+                .setSound(soundURI, AudioManager.STREAM_NOTIFICATION);
         setBuilder();
 
     }
@@ -61,8 +70,10 @@ public abstract class NotificationUtil {
 
     protected PendingIntent getMainActivityPendingIntent() {
         Intent activityIntent = new Intent(context, MainActivity.class);
-        activityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);//TODO WTH is this
-        return PendingIntent.getActivity(context, 0, activityIntent, 0);
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(context);
+        taskStackBuilder.addNextIntent(activityIntent);
+        return taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
     }
 
     protected PendingIntent getResetAction() {
@@ -87,12 +98,18 @@ public abstract class NotificationUtil {
             CharSequence name = context.getString(R.string.notification_channel_name);
             String description = context.getString(R.string.notification_channel_description);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            Uri soundURI = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.sound1);
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build();
             NotificationChannel notificationChannel = new NotificationChannel(channelId, name, importance);
             notificationChannel.setDescription(description);
+            notificationChannel.setSound(soundURI, audioAttributes);
             // you can't change the importance or other notification behaviors after this
-            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
             notificationManager.createNotificationChannel(notificationChannel);
-
+            notificationManager.deleteNotificationChannel(channelId);
+            notificationManager.createNotificationChannel(notificationChannel);
         }
     }
 

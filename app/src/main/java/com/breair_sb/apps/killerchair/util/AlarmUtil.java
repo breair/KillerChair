@@ -13,7 +13,7 @@ public class AlarmUtil {
     private Vibrator vibrator;
 
     public AlarmUtil(Context context) {
-        mediaPlayer = MediaPlayer.create(context, R.raw.timer_beep);
+        mediaPlayer = MediaPlayer.create(context, R.raw.sound0);
         mediaPlayer.setLooping(true);
         vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 

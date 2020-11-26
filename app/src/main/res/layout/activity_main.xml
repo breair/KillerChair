@@ -16,9 +16,7 @@
         android:clickable="true"
         android:contentDescription="@string/settings_button_description"
         android:focusable="true"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
-        android:src="@drawable/ic_base_settings_24"
+        android:src="?settings_button_src"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +39,7 @@
         android:id="@+id/timer_Layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
+        android:background="?round_button_ripple"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +83,7 @@
         android:contentDescription="@string/stop_button_description"
         android:scaleX="1.2"
         android:scaleY="1.2"
-        android:src="@drawable/ic_timer_pause_24"
+        android:src="?stop_button_src"
         android:text="@string/stop"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".AlarmActivity">
 
-    <Button
-        android:id="@+id/alarmbreak"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+    <DigitalClock
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="55sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <Button
+        android:id="@+id/alarmbreak"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
         android:text="@string/take_break"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="33sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,14 +37,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:src="@drawable/ic_baseline_close_24"
+        android:focusable="true"
+        android:contentDescription="@string/stop"
+        android:src="@drawable/ic_close_50"
         android:text="@string/stop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.80" />
+        app:layout_constraintVertical_bias="0.85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

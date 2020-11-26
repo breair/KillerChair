@@ -9,6 +9,13 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="background">@color/background</item>
+
+        <item name="round_button_ripple">@drawable/round_button</item>
+        <item name="back_button_src">@drawable/ic_arrow_back_24</item>
+        <item name="settings_button_src">@drawable/ic_settings_28</item>
+        <item name="start_button_src">@drawable/ic_start_arrow_24</item>
+        <item name="reset_button_src">@drawable/ic_reset_arrow_24</item>
+        <item name="stop_button_src">@drawable/ic_pause_24</item>
     </style>
 
     <style name="AppDarkTheme" parent="Theme.AppCompat.NoActionBar">
@@ -21,6 +28,12 @@
         <item name="android:textColorSecondary">@color/textColorDarkSecondary</item>
         <item name="background">@color/backgroundDark</item>
 
+        <item name="round_button_ripple">@drawable/round_button_dark</item>
+        <item name="back_button_src">@drawable/ic_arrow_back_24_dark</item>
+        <item name="settings_button_src">@drawable/ic_settings_28_dark</item>
+        <item name="start_button_src">@drawable/ic_start_arrow_24_dark</item>
+        <item name="reset_button_src">@drawable/ic_reset_arrow_24_dark</item>
+        <item name="stop_button_src">@drawable/ic_pause_24_dark</item>
     </style>
 
     <style name="RobotoTextStyle" parent="android:Widget.TextView">

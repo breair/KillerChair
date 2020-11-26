@@ -13,14 +13,10 @@
             app:showSeekBarValue="true"
             app:title="@string/sitting_time"
             app:useSimpleSummaryProvider="true" />
-        <SwitchPreference
-            app:key="break"
-            app:title="@string/isbreak" />
         <SeekBarPreference
             android:max="@integer/max_break"
             app:adjustable="true"
             app:defaultValue="5"
-            app:dependency="break"
             app:key="breaktime"
             app:min="@integer/min_break"
             app:seekBarIncrement="@integer/increment"
@@ -47,8 +43,8 @@
     </PreferenceCategory>
     <PreferenceCategory app:title="@string/info">
         <Preference
-            app:key="info"
-            android:summary="@string/info_summary" />
+            android:summary="@string/info_summary"
+            app:key="info" />
     </PreferenceCategory>
 
 

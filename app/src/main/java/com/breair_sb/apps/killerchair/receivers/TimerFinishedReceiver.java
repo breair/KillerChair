@@ -46,7 +46,7 @@ public class TimerFinishedReceiver extends BroadcastReceiver {
             @Override
             public void setBuilder() {
                 builder.setContentText(contentText)
-                        .addAction(R.drawable.ic_baseline_arrow_back_24, breakActionText, getBreakAction());
+                        .addAction(R.drawable.ic_arrow_back_24, breakActionText, getBreakAction());
             }
         };
         finishNotification.showNotification();
