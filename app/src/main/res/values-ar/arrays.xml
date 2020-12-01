@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources> <!-- Quotes -->
-    <string-array name="qoutes">
-        <item>q1</item>
-        <item>adfs adfasf sdfasff afaf</item>
-        <item>q3</item>
-        <item>q4</item>
-        <item>Put away your phone</item>
-        <item>Maintain a good posture</item>
-        <item>qewrc df wer df thre ee</item>
-        <item>shgs sg dsgdfgs dfgd</item>
-        <item>q9</item>
+<resources>
+    <!-- Quotes -->
+    <string-array name="quotes">
+        <item>الجلوسُ هو تدخينُ العصرِ الحديث</item>
+        <item>البقاء نشطاً ليس بتلك الصعوبة</item>
+        <item>الكثير من الجلوس سيُرهِقك ذهنياً و نفسياً</item>
+        <item>الجلوسُ لفتراتٍ طويلة يسببُ آلام الظهر</item>
+        <item>أترك هاتفك بعيداً</item>
+        <item>إجلس بوضعيةٍ مستقيمة</item>
+        <item>الإستمرارية هي المفتاح</item>
+        <item>الإنضباطُ يصنعُ الكمالَ</item>
+        <item>لا تدع كرسياً يقتل لك ظهرك</item>
     </string-array>
 </resources>

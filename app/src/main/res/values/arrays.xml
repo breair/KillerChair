@@ -1,15 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Quotes -->
-    <string-array name="qoutes">
-        <item>q1</item>
-        <item>adfs adfasf sdfasff afaf</item>
-        <item>q3</item>
-        <item>q4</item>
-        <item>Put away your phone</item>
+    <string-array name="quotes">
+        <item>sitting is the new smoking,
+            \nChairs are the new cigarettes</item>
+        <item>Being active is not as hard as you think</item>
+        <item>Too much sitting can be bad for your mental health</item>
+        <item>Sitting for long periods of time causes Back Pain</item>
+        <item>Put your phone away!</item>
         <item>Maintain a good posture</item>
-        <item>qewrc df wer df thre ee</item>
-        <item>shgs sg dsgdfgs dfgd</item>
-        <item>q9</item>
+        <item>Discipline makes perfect</item>
+        <item>Don\'t let a chair ruin your health</item>
+        <item>Consistency is the key</item>
     </string-array>
 
 </resources>

@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     public final int THEME_REQUEST_CODE = 1;
     private CircularProgressBar circularProgressBar;
     private TextView timerTimeTextView;
-    private TextView quoteTextView;
     private ImageButton stopActionButton;
     private Context context;
     private TimerUIReceiver timerUIReceiver;
@@ -41,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
         ThemeUtil.checkTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this;
 
         final ConstraintLayout timerLayout = findViewById(R.id.timer_Layout);
         timerTimeTextView = timerLayout.findViewById(R.id.timer_time);
-        quoteTextView = findViewById(R.id.quote);
+        TextView quoteTextView = findViewById(R.id.quote);
         circularProgressBar = timerLayout.findViewById(R.id.custom_progressBar);
         stopActionButton = findViewById(R.id.action_stoptimer);
         ImageButton settingsActivityButton = findViewById(R.id.settings_activity_button);
-        context = this;
         NotificationManagerCompat.from(context).cancel(0);
         timerTimeTextView.setText(setDefTimeTextView());
         quoteTextView.setText(pickRandomQuote());
@@ -105,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         this.registerReceiver(timerUIReceiver, intentFilter);
         //remove timer notification. TimerNotification id is 0
         NotificationManagerCompat.from(context).cancel(NotificationUtil.TIMER_STATUS_NOTIFICATION_ID);
-        quoteTextView.setText(pickRandomQuote());
     }
 
 
@@ -124,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String pickRandomQuote() {
-        String[] quotes = getResources().getStringArray(R.array.qoutes);
+        String[] quotes = getResources().getStringArray(R.array.quotes);
         Random random = new Random();
         return quotes[random.nextInt(quotes.length)];
     }

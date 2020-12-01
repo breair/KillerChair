@@ -38,7 +38,7 @@ public abstract class NotificationUtil {
         notificationManager = NotificationManagerCompat.from(context);
         this.NOTIFICATION_ID = NOTIFICATION_ID;
         this.context = context;
-        String timer_channelId = "KC_Timers";
+        String timer_channelId = "KillerChairNC";
         createNotificationChannel(context, timer_channelId);
         Uri soundURI = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.sound0);
         builder = new NotificationCompat.Builder(context, timer_channelId)
@@ -97,6 +97,8 @@ public abstract class NotificationUtil {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = context.getString(R.string.notification_channel_name);
             String description = context.getString(R.string.notification_channel_description);
+
+
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             Uri soundURI = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.sound1);
             AudioAttributes audioAttributes = new AudioAttributes.Builder()

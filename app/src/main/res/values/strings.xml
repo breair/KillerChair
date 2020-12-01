@@ -37,7 +37,7 @@
         \nversion 1.0
         \n©2020 Breair Sabir Inc.</string>
     <string name="zero_time">00:00</string>
-    <string name="quote">qoute here</string>
+    <string name="quote">quote here</string>
     <string name="reset">RESET</string>
     <string name="start">START</string>
 </resources>

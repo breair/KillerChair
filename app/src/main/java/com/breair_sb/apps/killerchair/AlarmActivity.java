@@ -1,9 +1,13 @@
 package com.breair_sb.apps.killerchair;
 
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -21,6 +25,20 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ThemeUtil.checkTheme(this);
         setContentView(R.layout.activity_alarm);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            setShowWhenLocked(true);
+            setTurnScreenOn(true);
+            KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+            if (keyguardManager != null) {
+                keyguardManager.requestDismissKeyguard(this, null);
+            }
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD |
+                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON |
+                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+        }
+
         Button breakButton = findViewById(R.id.alarmbreak);
         ImageButton stopButton = findViewById(R.id.alarmStop);
         alarm = new AlarmUtil(this);

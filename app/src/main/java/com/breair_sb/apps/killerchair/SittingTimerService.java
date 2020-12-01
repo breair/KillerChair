@@ -16,6 +16,8 @@ import com.breair_sb.apps.killerchair.util.BreakTimeUtil;
 import com.breair_sb.apps.killerchair.util.NotificationUtil;
 import com.breair_sb.apps.killerchair.util.SittingTimerUtil;
 
+import org.jetbrains.annotations.NotNull;
+
 import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_FINISHED;
 import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
 
@@ -46,7 +48,7 @@ public class SittingTimerService extends Service {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(@NotNull Intent intent, int flags, int startId) {
         if (intent.getAction() != null) {
             switch (intent.getAction()) {
                 case KC_TIMER_ACTION_START:
