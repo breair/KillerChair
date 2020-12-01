@@ -1,11 +1,11 @@
-package com.breair_sb.apps.killerchair.util;
+package com.breair_sb.apps.KillerChair.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
-import com.breair_sb.apps.killerchair.R;
+import com.breair_sb.apps.KillerChair.R;
 
 public class ThemeUtil {
     public static final String ThemeKey = "is_dark_theme";

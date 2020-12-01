@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair;
+package com.breair_sb.apps.KillerChair;
 
 import android.app.Service;
 import android.content.Context;
@@ -10,16 +10,14 @@ import android.os.IBinder;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.preference.PreferenceManager;
 
-import com.breair_sb.apps.killerchair.receivers.TimerFinishedReceiver;
-import com.breair_sb.apps.killerchair.receivers.TimerNotificationReceiver;
-import com.breair_sb.apps.killerchair.util.BreakTimeUtil;
-import com.breair_sb.apps.killerchair.util.NotificationUtil;
-import com.breair_sb.apps.killerchair.util.SittingTimerUtil;
+import com.breair_sb.apps.KillerChair.receivers.TimerFinishedReceiver;
+import com.breair_sb.apps.KillerChair.receivers.TimerNotificationReceiver;
+import com.breair_sb.apps.KillerChair.util.BreakTimeUtil;
+import com.breair_sb.apps.KillerChair.util.NotificationUtil;
+import com.breair_sb.apps.KillerChair.util.SittingTimerUtil;
 
-import org.jetbrains.annotations.NotNull;
-
-import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_FINISHED;
-import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
+import static com.breair_sb.apps.KillerChair.util.SittingTimerUtil.KC_TIMER_ACTION_FINISHED;
+import static com.breair_sb.apps.KillerChair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
 
 
 public class SittingTimerService extends Service {
@@ -40,7 +38,7 @@ public class SittingTimerService extends Service {
         context = this;
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         long sittingTimeInMins = sharedPrefs.getInt("SittingInterval", 25);
-        SittingTimer = new SittingTimerUtil((sittingTimeInMins * 6000), 0, 1000, context);//TODO 60000
+        SittingTimer = new SittingTimerUtil((sittingTimeInMins * 60000), 0, 1000, context);//TODO 60000
         timeNotificationReceiver = new TimerNotificationReceiver();
         timerFinishedReceiver = new TimerFinishedReceiver();
         this.registerReceiver(timeNotificationReceiver, new IntentFilter(KC_TIMER_ACTION_Time_CHANGED));
@@ -48,7 +46,7 @@ public class SittingTimerService extends Service {
     }
 
     @Override
-    public int onStartCommand(@NotNull Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent.getAction() != null) {
             switch (intent.getAction()) {
                 case KC_TIMER_ACTION_START:

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.breair_sb.apps.killerchair"
+    package="com.breair_sb.apps.KillerChair"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -14,23 +14,23 @@
         android:theme="@style/AppLightTheme">
 
         <activity
-            android:name=".AlarmActivity"
-            android:showOnLockScreen="true"
-            android:turnScreenOn="true"
+            android:name="com.breair_sb.apps.KillerChair.AlarmActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true"
+            android:turnScreenOn="true" />
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.breair_sb.apps.KillerChair.SettingsActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
 
         <service
-            android:name=".SittingTimerService"
+            android:name="com.breair_sb.apps.KillerChair.SittingTimerService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.breair_sb.apps.KillerChair.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".receivers.BreakTimeAlarmReceiver"
+            android:name="com.breair_sb.apps.KillerChair.receivers.BreakTimeAlarmReceiver"
             android:enabled="true" />
     </application>
 

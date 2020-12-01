@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair.receivers;
+package com.breair_sb.apps.KillerChair.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,10 +6,10 @@ import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
 
-import com.breair_sb.apps.killerchair.R;
-import com.breair_sb.apps.killerchair.util.NotificationUtil;
+import com.breair_sb.apps.KillerChair.R;
+import com.breair_sb.apps.KillerChair.util.NotificationUtil;
 
-import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
+import static com.breair_sb.apps.KillerChair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
 
 public class TimerNotificationReceiver extends BroadcastReceiver {
     private NotificationUtil TimerNotification;

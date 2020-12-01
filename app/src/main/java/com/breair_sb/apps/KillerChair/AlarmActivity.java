@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair;
+package com.breair_sb.apps.KillerChair;
 
 import android.app.KeyguardManager;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.breair_sb.apps.killerchair.util.AlarmUtil;
-import com.breair_sb.apps.killerchair.util.ThemeUtil;
+import com.breair_sb.apps.KillerChair.util.AlarmUtil;
+import com.breair_sb.apps.KillerChair.util.ThemeUtil;
 
 public class AlarmActivity extends AppCompatActivity {
 

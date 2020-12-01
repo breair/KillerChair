@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair;
+package com.breair_sb.apps.KillerChair;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import com.breair_sb.apps.killerchair.util.ThemeUtil;
+import com.breair_sb.apps.KillerChair.util.ThemeUtil;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
     private OnThemeChangeListener onThemeChangeListener;

@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair;
+package com.breair_sb.apps.KillerChair;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,14 +17,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.preference.PreferenceManager;
 
-import com.breair_sb.apps.killerchair.util.CircularProgressBar;
-import com.breair_sb.apps.killerchair.util.NotificationUtil;
-import com.breair_sb.apps.killerchair.util.ThemeUtil;
+import com.breair_sb.apps.KillerChair.util.CircularProgressBar;
+import com.breair_sb.apps.KillerChair.util.NotificationUtil;
+import com.breair_sb.apps.KillerChair.util.ThemeUtil;
 
 import java.util.Random;
 
-import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
-import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.formatTimeText;
+import static com.breair_sb.apps.KillerChair.util.SittingTimerUtil.KC_TIMER_ACTION_Time_CHANGED;
+import static com.breair_sb.apps.KillerChair.util.SittingTimerUtil.formatTimeText;
 
 
 public class MainActivity extends AppCompatActivity {

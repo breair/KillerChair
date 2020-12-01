@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair.util;
+package com.breair_sb.apps.KillerChair.util;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -15,13 +15,13 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.breair_sb.apps.killerchair.MainActivity;
-import com.breair_sb.apps.killerchair.R;
-import com.breair_sb.apps.killerchair.SittingTimerService;
+import com.breair_sb.apps.KillerChair.MainActivity;
+import com.breair_sb.apps.KillerChair.R;
+import com.breair_sb.apps.KillerChair.SittingTimerService;
 
-import static com.breair_sb.apps.killerchair.SittingTimerService.KC_BREAK_TIME_ACTION_START;
-import static com.breair_sb.apps.killerchair.SittingTimerService.KC_TIMER_ACTION_RESET;
-import static com.breair_sb.apps.killerchair.SittingTimerService.KC_TIMER_ACTION_START;
+import static com.breair_sb.apps.KillerChair.SittingTimerService.KC_BREAK_TIME_ACTION_START;
+import static com.breair_sb.apps.KillerChair.SittingTimerService.KC_TIMER_ACTION_RESET;
+import static com.breair_sb.apps.KillerChair.SittingTimerService.KC_TIMER_ACTION_START;
 
 //TODO refactor notification system
 public abstract class NotificationUtil {

@@ -61,7 +61,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.breair_sb.apps.killerchair.util.CircularProgressBar
+        <com.breair_sb.apps.KillerChair.util.CircularProgressBar
             android:id="@+id/custom_progressBar"
             android:layout_width="290sp"
             android:layout_height="290sp"

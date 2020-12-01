@@ -1,11 +1,11 @@
-package com.breair_sb.apps.killerchair.util;
+package com.breair_sb.apps.KillerChair.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 
-import com.breair_sb.apps.killerchair.R;
+import com.breair_sb.apps.KillerChair.R;
 
 public class SittingTimerUtil extends CountDownTimer {
 

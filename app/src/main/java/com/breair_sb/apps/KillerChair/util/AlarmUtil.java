@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair.util;
+package com.breair_sb.apps.KillerChair.util;
 
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -6,7 +6,7 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 
-import com.breair_sb.apps.killerchair.R;
+import com.breair_sb.apps.KillerChair.R;
 
 public class AlarmUtil {
     private MediaPlayer mediaPlayer;

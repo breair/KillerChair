@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair;
+package com.breair_sb.apps.KillerChair;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.breair_sb.apps.killerchair.util.ThemeUtil;
+import com.breair_sb.apps.KillerChair.util.ThemeUtil;
 
 public class SettingsActivity extends AppCompatActivity implements SettingsFragment.OnThemeChangeListener {
     @Override

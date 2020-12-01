@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair.util;
+package com.breair_sb.apps.KillerChair.util;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
-import com.breair_sb.apps.killerchair.receivers.BreakTimeAlarmReceiver;
+import com.breair_sb.apps.KillerChair.receivers.BreakTimeAlarmReceiver;
 
 import java.util.Calendar;
 

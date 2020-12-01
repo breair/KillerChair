@@ -1,11 +1,11 @@
-package com.breair_sb.apps.killerchair.receivers;
+package com.breair_sb.apps.KillerChair.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.breair_sb.apps.killerchair.R;
-import com.breair_sb.apps.killerchair.util.NotificationUtil;
+import com.breair_sb.apps.KillerChair.R;
+import com.breair_sb.apps.KillerChair.util.NotificationUtil;
 
 public class BreakTimeAlarmReceiver extends BroadcastReceiver {
 

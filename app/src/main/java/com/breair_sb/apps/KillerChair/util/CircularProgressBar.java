@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair.util;
+package com.breair_sb.apps.KillerChair.util;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.breair_sb.apps.killerchair.R;
+import com.breair_sb.apps.KillerChair.R;
 
 public class CircularProgressBar extends View {
     private float strokeWidth = 4; //thickness of progress bar

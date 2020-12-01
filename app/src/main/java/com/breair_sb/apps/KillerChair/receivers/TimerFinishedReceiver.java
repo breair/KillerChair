@@ -1,4 +1,4 @@
-package com.breair_sb.apps.killerchair.receivers;
+package com.breair_sb.apps.KillerChair.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,11 +7,11 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
-import com.breair_sb.apps.killerchair.AlarmActivity;
-import com.breair_sb.apps.killerchair.R;
-import com.breair_sb.apps.killerchair.util.NotificationUtil;
+import com.breair_sb.apps.KillerChair.AlarmActivity;
+import com.breair_sb.apps.KillerChair.R;
+import com.breair_sb.apps.KillerChair.util.NotificationUtil;
 
-import static com.breair_sb.apps.killerchair.util.SittingTimerUtil.KC_TIMER_ACTION_FINISHED;
+import static com.breair_sb.apps.KillerChair.util.SittingTimerUtil.KC_TIMER_ACTION_FINISHED;
 
 public class TimerFinishedReceiver extends BroadcastReceiver {
     Context context;
